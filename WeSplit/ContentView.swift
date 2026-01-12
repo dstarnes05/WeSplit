@@ -47,7 +47,7 @@ struct ContentView: View {
                     
         
                     Picker("Tip Percentage", selection: $tipPercentage){
-                        ForEach(1..<101){
+                        ForEach(0..<100){
                             Text($0, format: .percent)
                         }
                     }
@@ -61,6 +61,7 @@ struct ContentView: View {
                 Section("Total Check"){
                     Text(grandTotal, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                 }
+                .foregroundStyle(tipPercentage == 0 ? .red : .black)
             }
             .navigationTitle("WeSplit")
             .toolbar {
